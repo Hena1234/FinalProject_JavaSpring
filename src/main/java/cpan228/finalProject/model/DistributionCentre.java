@@ -1,14 +1,11 @@
 package cpan228.finalProject.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
 
 import java.util.ArrayList;
 @Data
@@ -18,10 +15,9 @@ import java.util.ArrayList;
 @Entity
 public class DistributionCentre{
 
-    @jakarta.persistence.Id
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
     @NotBlank
     private String name;
@@ -32,7 +28,13 @@ public class DistributionCentre{
     @NotBlank
     private String longitude;
 
+    private int itemAvailable;
 
-    // getters and setters
+    public DistributionCentre(String name, String latitude, String longitude, int itemAvailable) {
+        this.name = name;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.itemAvailable = itemAvailable;
+    }
 }
 
