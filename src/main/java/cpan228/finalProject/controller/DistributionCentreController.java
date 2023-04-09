@@ -16,19 +16,15 @@ import org.springframework.web.bind.annotation.*;
 public class DistributionCentreController {
 
     private final DistributionCentreRepository repository;
-    private final ItemRepository itemRepository;
-    public DistributionCentreController(DistributionCentreRepository repository, ItemRepository itemRepository) {
+
+    public DistributionCentreController(DistributionCentreRepository repository) {
         this.repository = repository;
-        this.itemRepository = itemRepository;
     }
     @GetMapping
     public Iterable<DistributionCentre> allDistributionCentres() {
         return repository.findAll();
     }
-    @GetMapping("/{itemAvailable}")
-    public Iterable<DistributionCentre> allItemsByDistributionCentre(@PathVariable("itemAvailable") int itemAvailable) {
-        return repository.findAllByItemAvailable(itemAvailable);
-    }
+
     @PostMapping
     public DistributionCentre createItem(@Valid @RequestBody CreateDC dc) {
         return repository.save(dc.toDC());

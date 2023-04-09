@@ -28,13 +28,11 @@ public class DistributionCentre{
     @NotBlank
     private String longitude;
 
-    private int itemAvailable;
 
-    public DistributionCentre(String name, String latitude, String longitude, int itemAvailable) {
+    public DistributionCentre(String name, String latitude, String longitude) {
         this.name = name;
         this.latitude = latitude;
         this.longitude = longitude;
-        this.itemAvailable = itemAvailable;
     }
 }
 

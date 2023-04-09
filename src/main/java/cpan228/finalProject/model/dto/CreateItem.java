@@ -19,6 +19,8 @@ public class CreateItem {
     private double price;
     @NotNull
     private int quantity;
+    @NotNull
+    private Long distributionCentreId;
 
     public Item toItem() {
         return Item.builder()
@@ -27,6 +29,7 @@ public class CreateItem {
                 .price(this.getPrice())
                 .quantity(this.getQuantity())
                 .brandName(this.getBrandName())
+                .distributionCentreId(this.getDistributionCentreId())
                 .build();
     }
 }

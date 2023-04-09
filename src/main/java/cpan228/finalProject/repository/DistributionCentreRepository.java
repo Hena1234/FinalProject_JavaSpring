@@ -9,5 +9,4 @@ import java.util.List;
 
 @Repository
 public interface DistributionCentreRepository extends JpaRepository<DistributionCentre, Long> {
-    List<DistributionCentre> findAllByItemAvailable(int itemAvailable);
 }

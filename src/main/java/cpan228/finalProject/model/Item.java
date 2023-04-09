@@ -28,6 +28,8 @@ public class Item {
     private double price;
     @NotNull
     private int quantity;
+    @NotNull
+    private Long distributionCentreId;
 
     public enum Brand {
 
@@ -44,11 +46,12 @@ public class Item {
         }
     }
 
-    public Item(String name, int yearItem, double price, Brand brandName, int quantity) {
+    public Item(String name, int yearItem, double price, Brand brandName, int quantity, Long distributionCentreId) {
         this.name = name;
         this.yearItem = yearItem;
         this.price = price;
         this.brandName = brandName;
         this.quantity = quantity;
+        this.distributionCentreId = distributionCentreId;
     }
 }

@@ -16,13 +16,11 @@ public class CreateDC {
     @NotBlank
     private String longitude;
 
-    private int itemAvailable;
     public DistributionCentre toDC() {
         return DistributionCentre.builder()
                 .name(this.getName())
                 .latitude(this.getLatitude())
                 .longitude(this.getLongitude())
-                .itemAvailable(this.getItemAvailable())
                 .build();
     }
 }
