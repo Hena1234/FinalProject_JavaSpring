@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface ItemRepository extends JpaRepository<Item, Long> {
     Iterable<Item> findAllByName (String name);
-    Item findItemByBrandNameAndName (Item.Brand brandName, String name);
+    Iterable<Item> findItemByBrandNameAndName (Item.Brand brandName, String name);
     @Transactional
     void deleteItemByDistributionCentreIdAndId (Long idDc, Long id);
 }

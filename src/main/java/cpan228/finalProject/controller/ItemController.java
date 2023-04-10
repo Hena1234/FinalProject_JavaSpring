@@ -51,18 +51,21 @@ public class ItemController {
         return DCs;
     }
     @GetMapping("/DC/{name}/{brand}")
-    public Optional<DistributionCentre> listDCByNameAndBrand(@PathVariable("name") String name,
+    public Iterable<Optional<DistributionCentre>> listDCByNameAndBrand(@PathVariable("name") String name,
                                                              @PathVariable("brand") Item.Brand brand){
 
-        Item item = itemRepository.findItemByBrandNameAndName(brand, name);
-        Long idDc = item.getDistributionCentreId();
-
-        Optional<DistributionCentre> DC = repository.findById(idDc);
-        return DC;
+        Iterable<Item> items = itemRepository.findItemByBrandNameAndName(brand, name);
+        List<Optional<DistributionCentre>> listDCs2 = new ArrayList<>();
+        for(Item item: items){
+            Long idDc = item.getDistributionCentreId();
+            listDCs2.add(repository.findById(idDc));
+        }
+        List<Optional<DistributionCentre>> DCs = listDCs2;
+        return DCs;
     }
 
     @GetMapping("/{name}/{brand}")
-    public Item listItemByNameAndBrand(@PathVariable("name") String name,
+    public Iterable<Item> listItemByNameAndBrand(@PathVariable("name") String name,
                                                              @PathVariable("brand") Item.Brand brand){
 
         return itemRepository.findItemByBrandNameAndName(brand, name);
